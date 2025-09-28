@@ -1,0 +1,20 @@
+.dialog-header {
+  background-color: #f0f0f0;
+  padding: 5px 24px;
+  color: #555;
+  border-bottom: 1px solid #ccc;
+}
+
+h1[mat-dialog-title] {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.welcome-message {
+  color: #003478;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}

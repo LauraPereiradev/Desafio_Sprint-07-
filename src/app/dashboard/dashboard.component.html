@@ -1,120 +1,95 @@
 <app-menu></app-menu>
-<app-menu></app-menu>
-<h2 class="text-primary text-center">Dashboard Ford</h2>
-<div class="d-flex align-items-center justify-content-evenly">
-  <div class="card w-25 mx-1">
-    <div class="card-header">Veiculo</div>
-    <div class="card-body">
-      <form [formGroup]="selectCarForms">
-        <select class="form-select my-2" name="" id="" formControlName="carId">
-          @for (vehicle of vehicles; track vehicle) {
-          <option [value]="vehicle.id">{{ vehicle.vehicle }}</option>
-          }
-        </select>
-      </form>
-    </div>
-  </div>
-  <div class="card w-25 mx-1">
-    <div class="card-header">Total de Vendas</div>
-    <div class="card-body">
-      @if (selectedVehicle) {
-      <h5 class="card-title">{{ selectedVehicle.volumetotal }}</h5>
-      } @else {
-      <h5 class="card-title">000</h5>
-      }
-      <p class="card-text text-primary">Unid.</p>
-    </div>
-  </div>
-  <div class="card w-25 mx-1">
-    <div class="card-header">Veiculos Conectados</div>
-    <div class="card-body">
-      @if (selectedVehicle) {
-      <h5 class="card-title">{{ selectedVehicle.connected }}</h5>
-      } @else {
-      <h5 class="card-title">000</h5>
-      }
-      <p class="card-text text-primary">Unid.</p>
-    </div>
-  </div>
-  <div class="card w-25 mx-1">
-    <div class="card-header">Software Atualizado</div>
-    <div class="card-body">
-      @if (selectedVehicle) {
-      <h5 class="card-title">{{ selectedVehicle.softwareUpdates }}</h5>
-      } @else {
-      <h5 class="card-title">000</h5>
-      }
-      <p class="card-text text-primary">Unid.</p>
-    </div>
-  </div>
-</div>
 
-<div class="container">
-  @if (selectedVehicle) {
-  <img
-    class="w-50 img-fluid d-block mx-auto"
-    [src]="selectedVehicle.img"
-    alt=""
-  />
-  }
-</div>
+<main class="dashboard-page">
+  <h2 class="page-title">Dashboard Ford</h2>
 
-<div class="container-fluid position-absolute bottom-0">
-  <table class="table table-bordered border-1 table-primary">
+  <section class="summary-cards">
+    <div class="card">
+      <div class="card-header">Veículo</div>
+      <div class="card-body">
+        <form [formGroup]="selectCarForms">
+          <select class="form-select" formControlName="carId">
+            <option value="">Selecione...</option>
+            @for (vehicle of vehicles; track vehicle.id) {
+            <option [value]="vehicle.id">{{ vehicle.vehicle }}</option>
+            }
+          </select>
+        </form>
+      </div>
+    </div>
+    
+    @if (selectedVehicle) {
+      <div class="card">
+        <div class="card-header">Total de Vendas</div>
+        <div class="card-body">
+          <h5 class="card-title">{{ selectedVehicle.volumetotal | number }}</h5>
+          <p class="card-text">Unid.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">Veículos Conectados</div>
+        <div class="card-body">
+          <h5 class="card-title">{{ selectedVehicle.connected | number }}</h5>
+          <p class="card-text">Unid.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">Software Atualizado</div>
+        <div class="card-body">
+          <h5 class="card-title">{{ selectedVehicle.softwareUpdates | number }}</h5>
+          <p class="card-text">Unid.</p>
+        </div>
+      </div>
+    }
+  </section>
+
+  <section class="vehicle-display">
+    @if (selectedVehicle) {
+    <img [src]="selectedVehicle.img" [alt]="selectedVehicle.vehicle" />
+    }
+  </section>
+</main>
+
+<footer class="vin-table-footer">
+  <table>
     <thead>
-      <tr>
-        <th>Codigo - Vin</th>
+      <tr class="footer-top">
+        <th>Código - VIN</th>
         <th>Odômetro</th>
-        <th>Nivel de Combustivel</th>
+        <th>Nível de Combustível</th>
         <th>Status</th>
         <th>Lat</th>
         <th>Long</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th>
-          <form [formGroup]="vinForm">
-            <input
-              class="form-control border border-primary"
-              type="text"
-              [formControl]="vinForm.controls.vin"
-            />
-          </form>
-        </th>
-        <!-- @if (carVin) {
-        <th>{{ carVin.odometro }}</th>
-        <th>{{ carVin.nivelCombustivel }}</th>
-        <th>{{ carVin.status }}</th>
-        <th>{{ carVin.lat }}</th>
-        <th>{{ carVin.long }}</th>
-        } -->
-        <th>
-          @if (carVin) {
-          {{ carVin.odometro }}
-          }
-        </th>
-        <th>
-          @if (carVin) {
-          {{ carVin.nivelCombustivel }}
-          }
-        </th>
-        <th>
-          @if (carVin) {
-          {{ carVin.status }}
-          }
-        </th>
-        <th>
-          @if (carVin) {
-          {{ carVin.lat }}
-          }
-        </th>
-        <th>
-          @if (carVin) {
-          {{ carVin.long }}
-          }
-        </th>
-      </tr>
+      @if(carVin) {
+        <tr class="footer-bottom">
+          <td>
+            <form [formGroup]="vinForm">
+              <input class="form-control" type="text" [formControl]="vinForm.controls.vin" />
+            </form>
+          </td>
+          <td>{{ carVin.odometro | number }} km</td>
+          <td>{{ carVin.nivelCombustivel }} %</td>
+          <td>{{ carVin.status }}</td>
+          <td>{{ carVin.lat }}</td>
+          <td>{{ carVin.long }}</td>
+        </tr>
+      } @else {
+        <tr>
+          <td>
+             <form [formGroup]="vinForm">
+              <input class="form-control" type="text" [formControl]="vinForm.controls.vin" placeholder="Digite o código VIN..."/>
+            </form>
+          </td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+      }
     </tbody>
   </table>
-</div>
+</footer>

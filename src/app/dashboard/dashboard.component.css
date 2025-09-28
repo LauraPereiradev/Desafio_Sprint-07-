@@ -1,3 +1,114 @@
-.dash{
-    margin-top: 5% ;
-    }
+.dashboard-page {
+
+  padding-bottom: 120px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.page-title {
+  text-align: center;
+  color: #0727dd;
+  margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.summary-cards {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  flex: 1;
+  max-width: 20%;
+  background-color: white;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid #e0e0e0;
+  font-weight: 600;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  color: #003478;
+}
+
+.card-text {
+  color: #003478;
+}
+
+.form-select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.vehicle-display {
+  text-align: center;
+  margin-top: 2rem;
+  min-height: 300px;
+}
+
+.vehicle-display img {
+  max-width: 850px;
+  height: auto;
+  display: inline-block;
+}
+
+.vin-table-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f8f9fa;
+  border-top: 1px solid #ddd;
+  padding: 1rem 2rem;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.vin-table-footer table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.vin-table-footer th,
+.vin-table-footer td {
+  padding: 0.75rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.vin-table-footer thead {
+    color: #003478;
+    font-weight: 600;
+}
+
+.vin-table-footer .form-control {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
