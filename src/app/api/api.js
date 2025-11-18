@@ -105,7 +105,16 @@ app.post("/vehicleData", (req, res) => {
             case "2RFAASDY54E4HDU34874":
                 return res.status(200).json({
                     id: 2,
-                    odometro: 130000,
+                    odometro: 1
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    0,
                     nivelCombustivel: 19,
                     status: "off",
                     lat: -12.2322,
